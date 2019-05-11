@@ -43,9 +43,9 @@ If not, see <http://www.gnu.org/licenses/>.
 
 #  发现数据相似性和关联的矩阵三因子化
 
-该算法预测关系矩阵的元素之间的新颖关联或相似性。 例如，给定本体或关系数据集，例如元组或关联元素，它推断出从数据模式中出现的隐式关系。logy or a relational data set, such as tuples or associated elements, it infers the implicit relations emerging from the data patterns.
+该算法预测关系矩阵的元素之间的新颖关联或相似性。 例如，给定本体或关系数据集，例如元组或关联元素，它推断出从数据模式中出现的隐式关系。
 
-数据按数据类型分组，例如 患者，基因，蛋白质或途径。 矩阵用于表示不同或相同数据类型的元素之间的关系（关联），例如，关系可以是基因共表达，基因或蛋白质相互作用，疾病之间的关系等。 different or same data types, e.g., the relations could be gene co-expression, gene or proteins interactions, relations among diseases, and so forth.
+数据按数据类型分组，例如 患者，基因，蛋白质或途径。 矩阵用于表示不同或相同数据类型的元素之间的关系（关联），例如，关系可以是基因共表达，基因或蛋白质相互作用，疾病之间的关系等。 
 
 该方法基于受约束的联合矩阵三因子分解，其灵感来自M.Zitnik和B.Zupan，“Data fusion by matrix factorization”，IEEE Transactions on Pattern Analysis＆Machine Intelligence 37（1），2015中描述的算法。
 
@@ -77,17 +77,17 @@ More here: [Vitali, F., et al. "Patient similarity by joint matrix trifactorizat
 # Quick start
 
 ## 在玩具示例上运行算法
-1.在命令行上运行`main`
-2.输入项目目录名称“Test_example”
-3.利润
+1. 在命令行上运行`main`
+2. 输入项目目录名称“Test_example”
+3. 利润
 
 ## 对您的数据运行算法
 
-1.准备（pair，value）格式的数据为`csv`文件（详见下文，[运行算法]（＃running-the-algorithm））
-2.在`parameters.m`文件中设置参数
-3.运行`get_mats_from_PV.m`
-3.运行`main.m`
-4.利润
+1. 准备（pair，value）格式的数据为`csv`文件（详见下文，[运行算法]（＃running-the-algorithm））
+2. 在`parameters.m`文件中设置参数
+3. 运行`get_mats_from_PV.m`
+3. 运行`main.m`
+4. 利润
 
 # User manual 贡献者
 Manual by **Simone Marini**.
@@ -104,7 +104,7 @@ Contributions by **Daniele Pala** and **Giovanna Nicora**.
 
 +  __different(D)__数据类型之间的关系，例如患者和疾病（诊断）患者
 
-+ __same（S）__数据类型之间的关系，如蛋白质（相互作用发现）或患者（患者相似度计算）
++ __same(S)__数据类型之间的关系，如蛋白质（相互作用发现）或患者（患者相似度计算）
 
 这两种模式将产生不同的输出，如第7节所述。
 
@@ -196,8 +196,7 @@ the name of the folder when requested on the Matlab command window.
 ##### Data preparation
 
 + 要运行算法，您需要以正确的格式存储数据。 文件命名约定和数据格式在[Matrix Construction]（＃matrix-construction）中描述。 例如，假设您有三种数据类型，基因，途径和患者。
-
-然后你可以得到以下文件：`gene_pathway.csv`，`patient_gene.csv`，`patient_patient_1.csv`，`gene_gene_1.csv`，`gene_gene_2.csv`和`gene_gene_3.csv`。
+  然后你可以得到以下文件：`gene_pathway.csv`，`patient_gene.csv`，`patient_patient_1.csv`，`gene_gene_1.csv`，`gene_gene_2.csv`和`gene_gene_3.csv`。
 
 + 确保您的数据对（例如`gene_pathway.csv`或`patient_disease.csv`）位于文件夹`pair_values`中。
 
@@ -212,29 +211,20 @@ the name of the folder when requested on the Matlab command window.
 Run `main.m`.
 
 #### Parameters
-In the script named `parameters.m` it’s possible to set the following parameters:
-+ `num_rep`, desired number of runs (repetitions) of the algorithm. Default: 10.
-+ `Targ` and `cTarg`, respectively the row and the column of the block matrix _R_ we are using as
-target, i.e. the values of `n` and `m` indexes for the target matrix `R<n>-<m>.mat` where new
-relations are to be unveiled. (To be used for both same-object, and different-object
-searches).
-+ `T`, stopping threshold, if the absolute difference of the target matrix reconstruction error is
-below this value the algorithm stops (verified every 10 iteractions). Default: 10 −4 .
-+ `epsilon`, an arbitrary small parameter that avoids divisions by zero that can occur.
-Default:10 −16 . We advise to not change this parameter.
-+ `index_target`, which indicates the object type whose objects we are interested to relate. (To
-be used for same-object search only), in terms of row-column coordinates in _R_
-+ `max_iter`, the maximum number of iterations for each repetition, default: 1000.
-+ `directoryMAT`: the name of the folder in which the matrices to be used are. We advise to
-not change this parameter.
-`lambda`, an array that contains the ranking scaling factors, one for each object type.
-`select`, a character that states if the algorithm will be used to compute the relations
-between object of the same type (`s`) or of a different type (`r`).
 
-When the `main.m` script is started, a message requesting the name of the project folder is displayed
-on the Matlab command window. Type the name of the folder and the algorithm will start. There
-6are two different ways to run the trifactorization algorithm, depending on whether the aim is to find
-the relations between objects of the same type or not.
+In the script named `parameters.m` it’s possible to set the following parameters:
+
++ `num_rep`, 算法的所需运行次数（重复次数）。 默认值：10。
++ `Targ` and `cTarg`, 分别是我们用作目标的块矩阵_R_的行和列, i.e. 目标矩阵“R<n>-<m >”的“n”和“m”索引值 where 新的关系将被揭开. ( 用于同一对象和不同对象搜索).
++ `T`,  停止阈值，如果目标矩阵重建误差的绝对差值低于此值，则算法停止（每10次迭代验证）. Default: 10 −4 .
++ `epsilon`, 一个任意的小参数，可以避免可能发生的除零。 默认值：10 -16。 我们建议不要更改此参数。
++ `index_target`, 表示我们感兴趣的对象的对象类型。 （仅用于同一对象搜索），_R_中的行列坐标
++ `max_iter`,  每次重复的最大迭代次数，默认值：1000。
++ `directoryMAT`: 要使用的矩阵所在的文件夹的名称。 我们建议不要更改此参数。
++ `lambda`, 包含排名缩放因子的数组，每个对象类型一个。
++ `select`, 一个字符，表明该算法是否将用于计算相同类型（`s`）或不同类型（`d`）的对象之间的关系。
+
+启动`main.m`脚本时，Matlab命令窗口中会显示一条请求项目文件夹名称的消息。 输入文件夹的名称，算法将启动。 有两种不同的运行trifactorization算法的方法，取决于目标是找到相同类型的对象之间的关系。
 
 ### Output
 可以在名为output的文件夹中找到该过程的结果。 结果取决于算法运行的模式（D或S）。
