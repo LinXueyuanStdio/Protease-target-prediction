@@ -102,7 +102,7 @@ Contributions by **Daniele Pala** and **Giovanna Nicora**.
 
 该算法的目标是揭示
 
-+  __different(D)__数据类型之间的关系，例如患者和疾病（诊断）患者
++  __different(D)__数据类型之间的关系，例如患者和疾病（诊断）患者和生存率（预测）
 
 + __same(S)__数据类型之间的关系，如蛋白质（相互作用发现）或患者（患者相似度计算）
 
