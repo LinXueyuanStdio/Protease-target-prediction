@@ -4,48 +4,6 @@ import numpy as np
 import pandas as pd
 
 
-class MatCsvPathPair:
-    def __init__(self,
-                 root="../../project/main/",
-                 objects="objects/",
-                 relations="matrices/",
-                 SAME_MODE_output="output_s/",
-                 DIFF_MODE_output="output_d/"):
-        self.root = root
-        self.objects = root+objects  # ../../project/main/objects/
-        self.relations = root+relations  # ../../project/main/matrices/
-        self.SAME_MODE_output = root+SAME_MODE_output  # ../../project/main/output_s/
-        self.DIFF_MODE_output = root+DIFF_MODE_output  # ../../project/main/output_d/
-        print("MatCsvPathPair avaliable path:")
-        print()
-        print("        " + root)
-        print("          " + objects)
-        print("            - objectA.mat")
-        print("            - objectB.mat")
-        print("            - objectC.mat")
-        print("          " + relations)
-        print("            - R1-2.mat")
-        print("            - T1-1.mat")
-        print("          " + SAME_MODE_output)
-        print("            - new_found_relations.mat")
-        print("          " + DIFF_MODE_output)
-        print("            - new_found_relations_row.mat")
-        print("            - new_found_relations_col.mat")
-        print()
-
-    def getOriginalRelationPair(self, name="R1-3"):
-        return (self.relations+'{}.mat'.format(name), "./{}.csv".format(name))
-
-    def getObjectPair(self, name="objectA"):
-        return (self.objects+'{}.mat'.format(name), "./{}.csv".format(name))
-
-    def getSAME_NewFoundRelationPair(self, name="new_found_relations"):
-        return (self.SAME_MODE_output+'{}.csv'.format(name), "./{}.csv".format(name))
-
-    def getDIFF_NewFoundRelationPair(self, name="new_found_relations_row"):
-        return (self.DIFF_MODE_output+'{}.csv'.format(name), "./{}.csv".format(name))
-
-
 ############################ object ############################
 
 
@@ -125,6 +83,48 @@ def save_DIFF_MODE_new_found_relations_mat_to_csv(
         relation_path='../../project/main/output_d/new_found_relations_row.csv',
         output_path="./new_found_relations.csv"):
     save_new_found_relations_mat_to_csv(idx_obj_path, col_obj_path, relation_path, output_path)
+
+
+class MatCsvPathPair:
+    def __init__(self,
+                 root="../../project/main/",
+                 objects="objects/",
+                 relations="matrices/",
+                 SAME_MODE_output="output_s/",
+                 DIFF_MODE_output="output_d/"):
+        self.root = root
+        self.objects = root+objects  # ../../project/main/objects/
+        self.relations = root+relations  # ../../project/main/matrices/
+        self.SAME_MODE_output = root+SAME_MODE_output  # ../../project/main/output_s/
+        self.DIFF_MODE_output = root+DIFF_MODE_output  # ../../project/main/output_d/
+        print("MatCsvPathPair avaliable path:")
+        print()
+        print("        " + root)
+        print("          " + objects)
+        print("            - objectA.mat")
+        print("            - objectB.mat")
+        print("            - objectC.mat")
+        print("          " + relations)
+        print("            - R1-2.mat")
+        print("            - T1-1.mat")
+        print("          " + SAME_MODE_output)
+        print("            - new_found_relations.mat")
+        print("          " + DIFF_MODE_output)
+        print("            - new_found_relations_row.mat")
+        print("            - new_found_relations_col.mat")
+        print()
+
+    def getOriginalRelationPair(self, name="R1-3"):
+        return (self.relations+'{}.mat'.format(name), "./{}.csv".format(name))
+
+    def getObjectPair(self, name="objectA"):
+        return (self.objects+'{}.mat'.format(name), "./{}.csv".format(name))
+
+    def getSAME_NewFoundRelationPair(self, name="new_found_relations"):
+        return (self.SAME_MODE_output+'{}.csv'.format(name), "./{}.csv".format(name))
+
+    def getDIFF_NewFoundRelationPair(self, name="new_found_relations_row"):
+        return (self.DIFF_MODE_output+'{}.csv'.format(name), "./{}.csv".format(name))
 
 
 class DataManager:
